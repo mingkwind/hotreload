@@ -2,8 +2,9 @@ package hotreload
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"log"
+	"os"
 	"testing"
 
 	jsoniter "github.com/json-iterator/go"
@@ -16,7 +17,9 @@ type config struct {
 var cnf config
 
 func loadConfig(filename string) error {
-	file, err := ioutil.ReadFile(filename)
+	// file, err := ioutil.ReadFile(filename)
+	f, _ := os.Open(filename)
+	file, err := io.ReadAll(f)
 	if err != nil {
 		log.Fatalln("[TEST_SIGUSR] Load config: ", err)
 	}

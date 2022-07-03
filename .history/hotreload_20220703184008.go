@@ -27,6 +27,7 @@ func Watcher() {
 				}
 				log.Println("event:", event)
 				if needReload(event.Op) {
+					fmt.Println(event.Name)
 					fn, ok := callbackTable.Load(event.Name)
 					if ok {
 						fn.(CallbackFunc)(event.Name)
@@ -50,7 +51,7 @@ func Watcher() {
 }
 
 func addWatchDir(watcher *fsnotify.Watcher, dir string) error {
-	fmt.Println("Watching dir:", dir)
+	fmt.Println("dir", dir)
 	return filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
 		if !info.IsDir() {
 			return nil

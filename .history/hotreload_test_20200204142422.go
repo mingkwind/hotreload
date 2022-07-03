@@ -6,7 +6,7 @@ import (
 	"log"
 	"testing"
 
-	jsoniter "github.com/json-iterator/go"
+	"github.com/json-iterator/go"
 )
 
 type config struct {

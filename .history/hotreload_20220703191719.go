@@ -44,13 +44,13 @@ func Watcher() {
 		}
 	}()
 
-	addWatchDir(watcher, watchDirectory)
+	//addWatchDir(watcher, watchDirectory)
 
 	<-done
 }
 
 func addWatchDir(watcher *fsnotify.Watcher, dir string) error {
-	fmt.Println("Watching dir:", dir)
+	fmt.Println("dir", dir)
 	return filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
 		if !info.IsDir() {
 			return nil

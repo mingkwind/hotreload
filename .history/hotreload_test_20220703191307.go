@@ -16,6 +16,7 @@ type config struct {
 var cnf config
 
 func loadConfig(filename string) error {
+	// file, err := ioutil.ReadFile(filename)
 	file, err := ioutil.ReadFile(filename)
 	if err != nil {
 		log.Fatalln("[TEST_SIGUSR] Load config: ", err)
