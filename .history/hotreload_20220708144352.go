@@ -12,7 +12,7 @@ import (
 func Watcher() {
 	watcher, err := fsnotify.NewWatcher()
 	if err != nil {
-		panic(err)
+		Panic(err)
 	}
 	defer watcher.Close()
 

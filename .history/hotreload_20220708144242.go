@@ -2,6 +2,7 @@ package hotreload
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"path/filepath"
 
@@ -12,7 +13,7 @@ import (
 func Watcher() {
 	watcher, err := fsnotify.NewWatcher()
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 	defer watcher.Close()
 
@@ -38,7 +39,7 @@ func Watcher() {
 				if !ok {
 					return
 				}
-				fmt.Println("error:", err)
+				log.Println("error:", err)
 			}
 		}
 	}()
